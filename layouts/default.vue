@@ -2,7 +2,7 @@
   <div>
     <LayoutsMainNavbar />
     <slot />
-<!--    <AppFooter />-->
+    <LayoutsFooter />
   </div>
 </template>
 <script setup lang="ts">
