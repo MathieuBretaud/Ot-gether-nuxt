@@ -1,11 +1,11 @@
 <template>
-  <main class="pb-72">
+  <main class="container mx-auto">
     <!-- HERO SECTION -->
     <section
-        class="flex items-center justify-between h-[100vh] pt-[10vh] gap-4"
+        class="flex items-center justify-between h-[100vh] pt-[5vh] gap-4"
     >
-      <div class="pl-20 flex flex-col space-y-3">
-        <h1 class="text-l lg:text-xl text-navyBlue mb-6">
+      <div class="flex flex-col space-y-3">
+        <h1 class="text-l lg:text-xl text-center text-navyBlue mb-6">
           Des évenements pour partager de bons moments.
         </h1>
         <p class="text-lg opacity-80">
@@ -15,7 +15,7 @@
         </p>
       </div>
 
-      <NuxtImg src="/image-hero.jpg" />
+      <NuxtImg src="/image-hero.jpg" sizes="100vw sm:50vw md:800px"/>
     </section>
 
     <!-- Tab section -->
