@@ -19,16 +19,20 @@
         <NuxtImg src="/image-hero.jpg" sizes="100vw sm:50vw md:800px"/>
       </section>
 
-      <!-- Tab section -->
-      <section>
-        <h1 class="text-4xl font-medium px-4">
-          All from a single source of truth
-        </h1>
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+        <UCard class="bg-gradientOrangePink hover:bg-gradientOrangePinkHover">
+          <h2 class="text-m text-white mb-4">Découvrez toutes les catégories d'évènements !</h2>
+        </UCard>
 
+        <LandingCard/>
+        <LandingCard/>
+        <LandingCard/>
+        <LandingCard/>
+        <LandingCard/>
       </section>
-
     </main>
   </UContainer>
+
 </template>
 <script setup lang="ts">
 </script>
