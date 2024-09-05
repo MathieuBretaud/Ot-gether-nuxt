@@ -9,18 +9,22 @@
     <div class="h-56">
       <UBadge color="gray">{{ event.category.name }}</UBadge>
       <h3 class="text-s mb-4 text-gray mt-6">{{ event.title }}</h3>
-      <div class="text-body-m text-gray mb-6">
-        {{ event.description }}
+      <div class="text-body-s text-gray mb-6">
+        <p>
+        Nombre de participants : {{ event.participants.length }} / {{ event.participant_max }}
+        </p>
+        <p>Début de l'événement : {{ formatDate(event.start_event) }}</p>
       </div>
     </div>
-
     <template #footer>
-      <UButton>Button</UButton>
+      <UButton>Detail</UButton>
     </template>
   </UCard>
 
 </template>
 <script setup lang="ts">
+import {formatDate} from "~/helpers";
+
 defineProps<{
   event: any
 }>()
