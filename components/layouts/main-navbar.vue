@@ -12,6 +12,9 @@
         <NuxtLink to="/" class="flex items-center space-x-1">
           <NuxtImg src="/logo-otgether.png" class="h-12"/>
         </NuxtLink>
+        <NuxtLink to="/">
+          <UButton color="red" variant="solid" size="xl">Evénements</UButton>
+        </NuxtLink>
 
         <div class="flex items-center space-x-2">
           <NuxtLink to="/">
