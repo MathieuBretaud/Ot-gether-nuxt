@@ -13,7 +13,7 @@ export default <Partial<Config>>{
                 m: ["32px", {lineHeight: "40px", fontWeight: "800"}],
                 s: ["24px", {lineHeight: "28px", fontWeight: "800"}],
                 "body-m": ["18px", {lineHeight: "28px", fontWeight: "500"}],
-                "body-s": ["16px", {lineHeight: "28px", fontWeight: "500"}],
+                "body-s": ["16px", {lineHeight: "28px"}],
             },
             colors: {
                 navyBlue: "#13183f",
