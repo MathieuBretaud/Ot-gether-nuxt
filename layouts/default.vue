@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="grid h-screen">
     <LayoutsMainNavbar />
     <slot />
     <LayoutsFooter />
