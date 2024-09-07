@@ -18,10 +18,10 @@
         <NuxtImg src="/image-hero.jpg" sizes="100vw sm:50vw md:800px"/>
       </section>
 
-      <section class="my-6">
+      <section v-if="data" class="my-6">
         <h2 class="text-l lg:text-l text-center text-navyBlue mb-6">Les derniers évènements</h2>
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7">
-          <template v-for="event in data" :key="event.id">
+          <template v-for="event in data.data" :key="event.id">
             <LastLandingCard :event="event"/>
           </template>
         </div>
@@ -50,6 +50,7 @@ import LastLandingCard from "~/components/landing/LastLandingCard.vue";
 const {data, status, error, refresh, clear} = await useFetch('/api/events/last', {
   method: 'GET',
 })
+console.log(data.value.data)
 
 // })
 
