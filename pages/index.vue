@@ -45,7 +45,7 @@
 <script setup lang="ts">
 // onMounted(async () => {
 
-import LastLandingCard from "~/components/landing/LastLandingCard.vue";
+import LastLandingCard from "~/components/EventCard.vue";
 
 const {data, status, error, refresh, clear} = await useFetch('/api/events/last', {
   method: 'GET',
