@@ -33,6 +33,7 @@ const handlePageChange = () => {
       </div>
       <div class="flex justify-center">
         <UPagination
+            :activeButton="{color: 'black'}"
             @update:modelValue="handlePageChange"
             v-model="page"
             :page-count="data!.meta.per_page"

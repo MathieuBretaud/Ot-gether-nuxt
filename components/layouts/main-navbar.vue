@@ -5,7 +5,7 @@
 
 <template>
   <div
-      class="h-[6vh] bg-red-500	 z-50 content-center"
+      class="bg-red-500	 z-50 content-center"
   >
     <UContainer>
       <div class="mx-auto flex items-center h-full justify-between">
