@@ -13,7 +13,7 @@
         <p>
         Nombre de participants : {{ event.participants_count }} / {{ event.participant_max }}
         </p>
-        <p>Début de l'événement : {{ formatDate(event.start_event) }}</p>
+        <p>Début de l'événement : {{ formatDate(event.start_date) }}</p>
       </div>
     </div>
     <template #footer>
@@ -24,9 +24,10 @@
 </template>
 <script setup lang="ts">
 import {formatDate} from "~/helpers";
+import type {Event} from "~/types";
 
 defineProps<{
-  event: any
+  event: Event
 }>()
 </script>
 

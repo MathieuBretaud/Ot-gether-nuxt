@@ -22,7 +22,7 @@
         <h2 class="text-l lg:text-l text-center text-navyBlue mb-6">Les derniers évènements</h2>
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7">
           <template v-for="event in data.data" :key="event.id">
-            <LastLandingCard :event="event"/>
+            <EventCard :event="event"/>
           </template>
         </div>
       </section>
@@ -44,9 +44,10 @@
 </template>
 <script setup lang="ts">
 
-import LastLandingCard from "~/components/EventCard.vue";
+import EventCard from "~/components/EventCard.vue";
+import type {EventResponse} from "~/types";
 
-const {data, status, error, refresh, clear} = await useFetch('/api/events/last', {
+const {data, status, error, refresh, clear} = await useFetch<EventResponse>('/api/events/last', {
   method: 'GET',
 })
 
