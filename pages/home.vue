@@ -34,11 +34,12 @@ const handlePageChange = () => {
       </div>
       <div class="flex justify-center">
         <UPagination
+            v-if="data"
             :activeButton="{color: 'black'}"
             @update:modelValue="handlePageChange"
             v-model="page"
-            :page-count="data!.meta.per_page"
-            :total="data!.meta.total"
+            :page-count="data.meta.per_page"
+            :total="data.meta.total"
         />
       </div>
     </section>
