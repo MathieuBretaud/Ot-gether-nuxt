@@ -11,6 +11,13 @@ const {data} = useFetch('/api/events/all', {
   },
 });
 
+const handlePageChange = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth', // Défilement fluide
+  })
+};
+
 </script>
 
 <template>
@@ -24,13 +31,15 @@ const {data} = useFetch('/api/events/all', {
           <LastLandingCard v-for="event in data.data" :key="event.id" :event="event"/>
         </template>
       </div>
+      <div class="flex justify-center">
+        <UPagination
+            @update:modelValue="handlePageChange"
+            v-model="page"
+            :page-count="data!.meta.per_page"
+            :total="data!.meta.total"
+        />
+      </div>
     </section>
-
-    <UPagination
-        v-model="page"
-        :page-count="data!.meta.per_page"
-        :total="data!.meta.total"
-    />
   </UContainer>
 </template>
 
