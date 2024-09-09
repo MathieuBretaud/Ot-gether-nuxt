@@ -11,6 +11,25 @@ const {data} = useFetch<EventResponse>('/api/events/all', {
     watch: [page],
   },
 });
+const searchEvent = ref('');
+
+const filteredEvents = computed(() => {
+  return data.value!.data.filter((event) => {
+    return event.title
+        .toLocaleLowerCase()
+        .startsWith(searchEvent.value.toLocaleLowerCase());
+  })
+})
+
+const totalPageUpdate = computed(() => {
+  if (searchEvent.value !== '') {
+    console.log(filteredEvents.value.length / data.value!.meta.per_page)
+    return filteredEvents.value.length / data.value!.meta.per_page
+  } else {
+    console.log('test')
+    return data.value!.meta.total
+  }
+})
 
 const handlePageChange = () => {
   window.scrollTo({
@@ -24,12 +43,13 @@ const handlePageChange = () => {
 <template>
   <UContainer>
     <section class="my-6">
-      <h2 class="text-l lg:text-l text-center text-navyBlue mb-6">
+      <h2 class="text-l lg:text-l text-center text-navyBlue mb-4">
         Les derniers évènements
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7">
-        <template v-if="data">
-          <LastLandingCard v-for="event in data.data" :key="event.id" :event="event"/>
+      <SearchBar v-model="searchEvent"/>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7 mt-6">
+        <template v-if="filteredEvents.length">
+          <LastLandingCard v-for="event in filteredEvents" :key="event.id" :event="event"/>
         </template>
       </div>
       <div class="flex justify-center">
@@ -39,7 +59,7 @@ const handlePageChange = () => {
             @update:modelValue="handlePageChange"
             v-model="page"
             :page-count="data.meta.per_page"
-            :total="data.meta.total"
+            :total="totalPageUpdate"
         />
       </div>
     </section>
