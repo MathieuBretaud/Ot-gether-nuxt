@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LastLandingCard from "~/components/EventCard.vue";
+import EventCard from "~/components/EventCard.vue";
 import type {EventResponse} from "~/types";
 
 const page = ref(1);
@@ -14,16 +14,20 @@ const {data} = useFetch<EventResponse>('/api/events/all', {
 const searchEvent = ref('');
 
 const filteredEvents = computed(() => {
-  return data.value!.data.filter((event) => {
-    return event.title
-        .toLocaleLowerCase()
-        .startsWith(searchEvent.value.toLocaleLowerCase());
-  })
+  if (data.value) {
+    const searchValue = searchEvent.value.toLocaleLowerCase().trim();
+    return data.value.data.filter((event) => {
+      return event.title
+          .toLocaleLowerCase()
+          .includes(searchValue);
+    })
+  }
 })
 
 const totalPageUpdate = computed(() => {
   if (searchEvent.value !== '') {
-    return filteredEvents.value.length / data.value!.meta.per_page
+    console.log(searchEvent.value);
+    return filteredEvents.value!.length / data.value!.meta.per_page
   } else {
     return data.value!.meta.total
   }
@@ -46,8 +50,8 @@ const handlePageChange = () => {
       </h2>
       <SearchBar v-model="searchEvent"/>
       <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7 mt-6">
-        <template v-if="filteredEvents.length">
-          <LastLandingCard v-for="event in filteredEvents" :key="event.id" :event="event"/>
+        <template v-if="filteredEvents?.length">
+          <EventCard v-for="event in filteredEvents" :key="event.id" :event="event"/>
         </template>
       </div>
       <div class="flex justify-center">
