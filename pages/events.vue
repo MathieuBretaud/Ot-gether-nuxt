@@ -23,10 +23,8 @@ const filteredEvents = computed(() => {
 
 const totalPageUpdate = computed(() => {
   if (searchEvent.value !== '') {
-    console.log(filteredEvents.value.length / data.value!.meta.per_page)
     return filteredEvents.value.length / data.value!.meta.per_page
   } else {
-    console.log('test')
     return data.value!.meta.total
   }
 })
