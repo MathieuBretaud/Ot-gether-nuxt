@@ -1,4 +1,4 @@
-export type Event = {
+export type EventType = {
     id: number;
     title: string;
     description: string;
@@ -17,6 +17,10 @@ type Meta = {
 };
 
 export type EventResponse = {
-    data: Event[];
+    data: EventType;
+};
+
+export type EventsResponse = {
+    data: EventType[];
     meta: Meta;
 };

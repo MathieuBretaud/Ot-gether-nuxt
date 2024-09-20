@@ -45,9 +45,9 @@
 <script setup lang="ts">
 
 import EventCard from "~/components/EventCard.vue";
-import type {EventResponse} from "~/types";
+import type {EventsResponse} from "~/types";
 
-const {data, status, error, refresh, clear} = await useFetch<EventResponse>('/api/events/last', {
+const {data, status, error, refresh, clear} = await useFetch<EventsResponse>('/api/events/last', {
   method: 'GET',
 })
 
