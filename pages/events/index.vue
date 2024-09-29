@@ -54,7 +54,7 @@ const handlePageChange = () => {
           <EventCard v-for="event in filteredEvents" :key="event.id" :event="event"/>
         </template>
       </div>
-      <div class="flex justify-center">
+      <div v-if="data!.data.length > data!.meta.per_page" class="flex justify-center">
         <UPagination
             v-if="data"
             :activeButton="{color: 'black'}"
