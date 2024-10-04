@@ -11,23 +11,28 @@
       <h3 class="text-s mb-4 text-gray mt-6">{{ event.title }}</h3>
       <div class="text-body-s text-gray mb-6">
         <p>
-        Nombre de participants : {{ event.participants_count }} / {{ event.participant_max }}
+
+          Nombre de participants : {{ event.participants_count }} / {{ event.participant_max }
+
         </p>
         <p>Début de l'événement : {{ formatDate(event.start_date) }}</p>
       </div>
     </div>
     <template #footer>
-      <UButton color="red" size="lg">Detail</UButton>
+      <NuxtLink :to="`/events/${event.slug}-${event.id}`">
+        <UButton color="red" size="lg">Detail</UButton>
+      </NuxtLink>
+
     </template>
   </UCard>
 
 </template>
 <script setup lang="ts">
 import {formatDate} from "~/helpers";
-import type {Event} from "~/types";
+import type {EventType} from "~/types";
 
 defineProps<{
-  event: Event
+  event: EventType
 }>()
 </script>
 

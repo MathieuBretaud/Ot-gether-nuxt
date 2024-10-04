@@ -1,6 +1,7 @@
-export type Event = {
+export type EventType = {
     id: number;
     title: string;
+    slug: string;
     description: string;
     participant_max: number;
     participants_count: number;
@@ -17,6 +18,10 @@ type Meta = {
 };
 
 export type EventResponse = {
-    data: Event[];
+    data: EventType;
+};
+
+export type EventsResponse = {
+    data: EventType[];
     meta: Meta;
 };

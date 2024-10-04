@@ -28,15 +28,10 @@
       </section>
 
       <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-7">
-        <UCard class="bg-gradientOrangePink hover:bg-gradientOrangePinkHover">
-          <h2 class="text-m text-white mb-4">Découvrez toutes les catégories d'évènements !</h2>
+        <UCard class="bg-gradientOrangePink hover:bg-gradientOrangePinkHover flex items-center">
+          <h2 class="text-m text-white mb-4 leading-relaxed	">Découvrez toutes les catégories d'évènements !</h2>
         </UCard>
-
-        <LandingCard/>
-        <LandingCard/>
-        <LandingCard/>
-        <LandingCard/>
-        <LandingCard/>
+        <LandingCard v-for="category in categories" :category="category"/>
       </section>
     </main>
   </UContainer>
@@ -45,9 +40,10 @@
 <script setup lang="ts">
 
 import EventCard from "~/components/EventCard.vue";
-import type {EventResponse} from "~/types";
+import type {EventsResponse} from "~/types";
+import {categories} from "~/constants/categories";
 
-const {data, status, error, refresh, clear} = await useFetch<EventResponse>('/api/events/last', {
+const {data, status, error, refresh, clear} = await useFetch<EventsResponse>('/api/events/last', {
   method: 'GET',
 })
 
