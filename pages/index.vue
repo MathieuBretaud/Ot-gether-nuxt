@@ -31,12 +31,7 @@
         <UCard class="bg-gradientOrangePink hover:bg-gradientOrangePinkHover">
           <h2 class="text-m text-white mb-4">Découvrez toutes les catégories d'évènements !</h2>
         </UCard>
-
-        <LandingCard/>
-        <LandingCard/>
-        <LandingCard/>
-        <LandingCard/>
-        <LandingCard/>
+        <LandingCard v-for="category in categories" :category="category"/>
       </section>
     </main>
   </UContainer>
@@ -46,6 +41,7 @@
 
 import EventCard from "~/components/EventCard.vue";
 import type {EventsResponse} from "~/types";
+import {categories} from "~/constants/categories";
 
 const {data, status, error, refresh, clear} = await useFetch<EventsResponse>('/api/events/last', {
   method: 'GET',
