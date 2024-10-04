@@ -17,7 +17,7 @@
       </div>
     </div>
     <template #footer>
-      <NuxtLink :to="`/events/${event.id}`">
+      <NuxtLink :to="`/events/${event.slug}-${event.id}`">
         <UButton color="red" size="lg">Detail</UButton>
       </NuxtLink>
     </template>
@@ -26,10 +26,10 @@
 </template>
 <script setup lang="ts">
 import {formatDate} from "~/helpers";
-import type {Event} from "~/types";
+import type {EventType} from "~/types";
 
 defineProps<{
-  event: Event
+  event: EventType
 }>()
 </script>
 

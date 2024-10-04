@@ -1,6 +1,7 @@
 export type EventType = {
     id: number;
     title: string;
+    slug: string;
     description: string;
     participant_max: number;
     participants_count: number;

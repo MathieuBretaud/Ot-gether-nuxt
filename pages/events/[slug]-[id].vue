@@ -4,7 +4,8 @@ import type {EventResponse, EventType} from "~/types";
 import {formatDate} from "~/helpers";
 
 const route = useRoute();
-const {data, pending, error} = useFetch<EventResponse>(`/api/events/${route.params.id}`);
+const id = typeof route.params.id === 'string' ? route.params.id.split('-').pop() : null;
+const {data, pending, error} = useFetch<EventResponse>(`/api/events/${id}`);
 
 // const event =ref()
 </script>

@@ -33,6 +33,8 @@ const totalPageUpdate = computed(() => {
   }
 })
 
+const showPaginator = computed(() => data.value!.data.length !== data.value!.meta.per_page)
+
 const handlePageChange = () => {
   window.scrollTo({
     top: 0,
@@ -54,7 +56,7 @@ const handlePageChange = () => {
           <EventCard v-for="event in filteredEvents" :key="event.id" :event="event"/>
         </template>
       </div>
-      <div v-if="data!.data.length > data!.meta.per_page" class="flex justify-center">
+      <div class="flex justify-center">
         <UPagination
             v-if="data"
             :activeButton="{color: 'black'}"
