@@ -12,7 +12,7 @@
       <div class="text-body-s text-gray mb-6">
         <p>
 
-          Nombre de participants : {{ event.participants_count }} / {{ event.participant_max }
+          Nombre de participants : {{ event.participants_count }} / {{ event.participant_max }}
 
         </p>
         <p>Début de l'événement : {{ formatDate(event.start_date) }}</p>
