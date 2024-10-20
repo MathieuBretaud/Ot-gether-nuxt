@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import EventCard from "~/components/EventCard.vue";
 import type {EventsResponse} from "~/types";
-
+import {useCategoryList} from "~/composables/useCategory";
+const {categories} = useCategoryList();
 const page = ref(1);
-
+console.log(categories.value)
 const {data} = useFetch<EventsResponse>('/api/events/all', {
   method: 'GET',
   params: {
