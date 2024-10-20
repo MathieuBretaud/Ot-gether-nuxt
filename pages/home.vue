@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import LastLandingCard from "~/components/EventCard.vue";
-import type {EventResponse} from "~/types";
+import type {EventResponse, EventsResponse} from "~/types";
 
 const page = ref(1);
 
-const {data} = useFetch<EventResponse>('/api/events/all', {
+const {data} = useFetch<EventsResponse>('/api/events/all', {
   method: 'GET',
   params: {
     page: page,
