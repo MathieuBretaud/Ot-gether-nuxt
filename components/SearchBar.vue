@@ -3,7 +3,7 @@ const searchValue = ref('')
 </script>
 
 <template>
-  <UInput color="red" variant="outline" placeholder="Search..."
+  <UInput size="md" color="red" variant="outline" placeholder="Search..."
           v-model="searchValue"/>
 </template>
 

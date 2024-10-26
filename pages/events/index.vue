@@ -9,7 +9,7 @@ const searchEvent = ref();
 
 const page = ref(1);
 
-const { data: events, refresh } = await useAsyncData<EventsResponse>(
+const {data: events, refresh} = await useAsyncData<EventsResponse>(
     'events',
     () => $fetch('/api/events/all', {
       method: 'GET',
@@ -41,9 +41,10 @@ const handlePageChange = () => {
       <h2 class="text-l lg:text-l text-center text-navyBlue mb-4">
         Les derniers évènements
       </h2>
-      <!--      <SearchBar v-model="searchEvent" v-model:categories="categories"/>-->
-      <SearchBar v-model="searchEvent"/>
-      <SelectCategories v-model="selectCategory" :categories="categories"/>
+      <div class="flex flex-row  justify-center items-center gap-4">
+        <SearchBar v-model="searchEvent"/>
+        <SelectCategories v-model="selectCategory" :categories="categories"/>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7 mt-6">
         <template v-if="events?.data.length">
           <EventCard v-for="event in events.data" :key="event.id" :event="event"/>
