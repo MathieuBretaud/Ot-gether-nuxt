@@ -6,7 +6,7 @@ const model = defineModel<string>()
 </script>
 
 <template>
-  <USelect placeholder="choisissez une catégorie" v-model="model" :options="categories" valueAttribute="id" option-attribute="name"/>
+  <USelect placeholder="choisissez une catégorie" v-model="model" :options="categories" valueAttribute="name" option-attribute="name"/>
 </template>
 
 <style scoped>

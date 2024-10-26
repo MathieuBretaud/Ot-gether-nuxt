@@ -1,7 +1,7 @@
 <template>
   <!--  <UCard-->
   <!--      :style="{ backgroundImage: `url(${event.category.image_url})`, backgroundSize: 'cover', backgroundPosition: 'center' }">-->
-  <UCard :ui="{ header: { padding: 0}, footer:{base: 'flex justify-center'} }">
+  <UCard :ui="{ header: { padding: '0'}, footer:{base: 'flex justify-center'} }">
     <template #header>
       <NuxtImg :src="event.image_url" width="400" height="300"/>
     </template>
