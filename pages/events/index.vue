@@ -5,50 +5,26 @@ import {useCategoryList} from "~/composables/useCategoryList";
 
 const {categories} = useCategoryList();
 const selectCategory = ref()
-console.log(selectCategory.value)
+const searchEvent = ref();
+
 const page = ref(1);
-const {data: events} = useFetch<EventsResponse>('/api/events/all', {
-  method: 'GET',
-  params: {
-    page: page,
-    watch: [page],
-  },
-});
-const searchEvent = ref('');
 
-watch(selectCategory, (newValue) => {
-  selectCategory.value = newValue
-})
-
-const filteredEvents = computed(() => {
-  if (events.value) {
-    if (searchEvent) {
-    const searchValue = searchEvent.value.toLocaleLowerCase().trim();
-      return events.value.data.filter((event) => {
-        return event.title
-            .toLocaleLowerCase()
-            .includes(searchValue);
-      })
+const { data: events, refresh } = await useAsyncData<EventsResponse>(
+    'events',
+    () => $fetch('/api/events/all', {
+      method: 'GET',
+      params: {
+        page: page.value,
+        search: searchEvent.value,
+        category: selectCategory.value,
+      },
+    }),
+    {
+      watch: [page, searchEvent, selectCategory],
     }
-    if (selectCategory.value) {
-      return events.value.data.filter((event) => {
-        console.log(selectCategory.value)
-        return event.category === selectCategory.value
-      })
-    }
-    // return events.value.data
-  }
-})
+);
 
-const totalPageUpdate = computed(() => {
-  if (searchEvent.value !== '') {
-    console.log(searchEvent.value);
-    return filteredEvents.value!.length / events.value!.meta.per_page
-  } else {
-    return events.value!.meta.total
-  }
-})
-
+console.log(selectCategory.value)
 
 const handlePageChange = () => {
   window.scrollTo({
@@ -69,8 +45,8 @@ const handlePageChange = () => {
       <SearchBar v-model="searchEvent"/>
       <SelectCategories v-model="selectCategory" :categories="categories"/>
       <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-7 mt-6">
-        <template v-if="filteredEvents?.length">
-          <EventCard v-for="event in filteredEvents" :key="event.id" :event="event"/>
+        <template v-if="events?.data.length">
+          <EventCard v-for="event in events.data" :key="event.id" :event="event"/>
         </template>
       </div>
       <div class="flex justify-center">
@@ -80,7 +56,7 @@ const handlePageChange = () => {
             @update:modelValue="handlePageChange"
             v-model="page"
             :page-count="events.meta.per_page"
-            :total="totalPageUpdate"
+            :total="events.meta.total"
         />
       </div>
     </section>

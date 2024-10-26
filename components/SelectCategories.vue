@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
 defineProps(['categories'])
-const model = defineModel<string>()
+const model = defineModel<number>()
 
 </script>
 
 <template>
-  <USelect placeholder="choisissez une catégorie" v-model="model" :options="categories" valueAttribute="name" option-attribute="name"/>
+  <USelect placeholder="choisissez une catégorie" v-model="model" :options="categories" valueAttribute="id" option-attribute="name"/>
 </template>
 
 <style scoped>
