@@ -1,5 +1,8 @@
 <script setup lang="ts">
 
+import Registration from "~/components/auth/Registration.vue";
+
+const isOpen = ref(false)
 
 </script>
 
@@ -18,7 +21,7 @@
 
         <div class="flex items-center space-x-2">
           <NuxtLink to="/">
-            <UButton color="red" variant="solid" size="xl"> Connexion</UButton>
+            <UButton @click="isOpen = true" color="red" variant="solid" size="xl"> Connexion</UButton>
           </NuxtLink>
           <NuxtLink to="/">
             <UButton color="red" variant="solid" size="xl"> Inscription</UButton>
@@ -27,4 +30,5 @@
       </div>
     </UContainer>
   </div>
+  <Registration v-model="isOpen" />
 </template>
