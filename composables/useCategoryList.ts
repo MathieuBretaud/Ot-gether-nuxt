@@ -1,4 +1,3 @@
-import {useState} from "#app";
 import type {CategoriesResponse, CategoryType} from "~/types/Category.type";
 
 export const useCategoryList = () => {
@@ -17,7 +16,7 @@ export const useCategoryList = () => {
         }
     };
 
-    fetchCategories();
+    fetchCategories()
 
     return {
         categories
