@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Registration from "~/components/auth/Registration.vue";
+import RegistrationModal from "~/components/auth/RegistrationModal.vue";
 
 const isOpen = ref(false)
 
@@ -18,17 +18,13 @@ const isOpen = ref(false)
         <NuxtLink to="/events">
           <UButton color="red" variant="solid" size="xl">Nos évènements</UButton>
         </NuxtLink>
-
         <div class="flex items-center space-x-2">
           <NuxtLink to="/">
             <UButton @click="isOpen = true" color="red" variant="solid" size="xl"> Connexion</UButton>
-          </NuxtLink>
-          <NuxtLink to="/">
-            <UButton color="red" variant="solid" size="xl"> Inscription</UButton>
           </NuxtLink>
         </div>
       </div>
     </UContainer>
   </div>
-  <Registration v-model="isOpen" />
+  <RegistrationModal v-model="isOpen" />
 </template>
